@@ -3,38 +3,36 @@ import { RouterLink, RouterView } from 'vue-router';
 </script>
 
 <template>
-    <div>
-        <v-app>
-            <v-app-bar>
-                <v-app-bar-nav-icon size="60" style="font-size: 40px; padding: 5px 0 0 5px;"
-                    @click="menuOpen = !menuOpen"></v-app-bar-nav-icon>
-            </v-app-bar>
-            <v-card v-if="menuOpen" class="menu-card" elevation="6">
-                <v-card-text style="padding: 0;">
-                    <v-list>
-                        <v-list-item style="padding: 0;">
-                            <v-list-item-content class="item-content">
-                                <v-list-item-title>
-                                    <RouterLink to="/home">Home</RouterLink>
-                                </v-list-item-title>
-                            </v-list-item-content>
-                            <v-list-item-content class="item-content">
-                                <v-list-item-title>Menu</v-list-item-title>
-                            </v-list-item-content>
-                            <v-list-item-content class="item-content">
-                                <v-list-item-title>
-                                    <RouterLink to="/about">Bestellen</RouterLink>
-                                </v-list-item-title>
-                            </v-list-item-content>
-                            <v-list-item-content class="item-content">
-                                <v-list-item-title>Contact</v-list-item-title>
-                            </v-list-item-content>
-                        </v-list-item>
-                    </v-list>
-                </v-card-text>
-            </v-card>
-        </v-app>
-    </div>
+    <v-app>
+        <v-app-bar>
+            <v-app-bar-nav-icon size="60" style="font-size: 35px; padding-top: 5px;"
+                @click="menuOpen = !menuOpen"></v-app-bar-nav-icon>
+        </v-app-bar>
+        <v-card v-if="menuOpen" class="menu-card" elevation="6">
+            <v-card-text style="padding: 0;">
+                <v-list>
+                    <v-list-item style="padding: 0;">
+                        <v-list-item-content class="item-content">
+                            <v-list-item-title>
+                                <RouterLink to="/home">Home</RouterLink>
+                            </v-list-item-title>
+                        </v-list-item-content>
+                        <v-list-item-content class="item-content">
+                            <v-list-item-title>Menu</v-list-item-title>
+                        </v-list-item-content>
+                        <v-list-item-content class="item-content">
+                            <v-list-item-title>
+                                <RouterLink to="/about">Bestellen</RouterLink>
+                            </v-list-item-title>
+                        </v-list-item-content>
+                        <v-list-item-content class="item-content">
+                            <v-list-item-title>Contact</v-list-item-title>
+                        </v-list-item-content>
+                    </v-list-item>
+                </v-list>
+            </v-card-text>
+        </v-card>
+    </v-app>
 </template>
   
   
@@ -53,6 +51,10 @@ export default {
 
 * {
     font-family: 'Itim', cursive;
+}
+
+.v-application:deep(.v-application__wrap) {
+    min-height: unset;
 }
 
 a {

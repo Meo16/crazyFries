@@ -1,3 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+
+* {
+    font-family: 'Itim', cursive;
+}
+
 h1 {
+    margin-top: 250px;
     color: red;
+}
+
+.logoHomePage {
+    margin-top: 70px;
+}
+
+.v-card-title {
+    font-size: 28px;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+
+.overlay-link2 {
+    font-size: 28px;
+    color: #CF0400;
+    text-decoration: none;
+}
+
+.overlay-link2:hover {
+    color: #F9C033;
+}
+
+.overlay-link {
+    text-shadow: 3px 4px 7px rgba(81, 67, 21, 0.8);
+    font-size: 28px;
+    color: white;
+    text-decoration: none;
+}
+
+.v-card-title {
+    text-align: center;
+}
+
+.directToOrderImg {
+    margin-top: 80px;
+    opacity: 80%;
+    border-radius: 28px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    -webkit-transition: 0.2s ease-in-out;
+    -moz-transition: 0.2s ease-in-out;
+    -ms-transition: 0.2s ease-in-out;
+    -o-transition: 0.2s ease-in-out;
+    transition: 0.2s ease-in-out;
+}
+
+.directToOrderImg:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.menuImg {
+    opacity: 90%;
+    border-radius: 28px;
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+}
+
+.image2-container {
+    margin-top: 80px;
+}
+
+.content-container {
+    position: relative;
+}
+
+.bottom-image-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: -1;
+}
+
+.bottom-image {
+    width: 100%;
+    object-fit: cover;
 }
