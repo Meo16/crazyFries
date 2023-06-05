@@ -42,7 +42,6 @@ h1 {
 
 .directToOrderImg {
     margin-top: 80px;
-    opacity: 80%;
     border-radius: 28px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     -webkit-transition: 0.2s ease-in-out;
@@ -57,17 +56,13 @@ h1 {
 }
 
 .menuImg {
-    opacity: 90%;
     border-radius: 28px;
     box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
 }
 
 .image2-container {
+    margin-bottom: 20px;
     margin-top: 80px;
-}
-
-.content-container {
-    position: relative;
 }
 
 .bottom-image-container {

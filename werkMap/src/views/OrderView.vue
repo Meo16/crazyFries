@@ -1,49 +1,39 @@
-<!-- <template>
-  <div class="product-cards">
-    <h1>Order View</h1>
-    <ul>
-      <li v-for="product in products" :key="product.id">{{ product.naam }}</li>
-    </ul>
-  </div>
-</template> -->
+<script setup>
+import addBtn from '../components/AddButton.vue';
+import quantitySelect from '../components/NumSelect.vue';
+</script>
+
 <template>
-  <div class="card-grid">
-    <v-card v-for="product in products" :key="product.id" class="mx-auto" max-width="200">
-      <v-img :src="product.src" height="200px"></v-img>
-
-      <v-card-title>
-        {{ product.title }}
-      </v-card-title>
-
-      <v-card-subtitle>
-        {{ product.subtitle }}
-      </v-card-subtitle>
-
-      <v-card-actions>
-        <v-btn color="orange lighten-2" text>
-          Explore
-        </v-btn>
-
-        <v-spacer></v-spacer>
-
-        <v-btn icon>
-          <v-icon></v-icon>
-        </v-btn>
-      </v-card-actions>
-
-      <v-expand-transition>
-        <div>
-          <v-divider></v-divider>
-
-          <v-card-text>
-            {{ product.description }}
-          </v-card-text>
-        </div>
-      </v-expand-transition>
-    </v-card>
-  </div>
-  <div class="bottom-image-container">
-    <v-img class="bottom-image" src="../../src/assets/img/wave (5).png" width=""></v-img>
+  <div class="d-flex align-center flex-column">
+    <v-img class="logo" src="../../src/assets/img/Logo.png"></v-img>
+    <v-row>
+      <v-col v-for="product in products" :key="product.id" cols="6" class="d-flex align-center flex-column">
+        <v-card class="custom-card">
+          <div class="card-image">
+            <v-img :src="product.src + [product.id] + '.png'"></v-img>
+          </div>
+          <div class="card-content">
+            <v-card-title class="card-title">
+              {{ product.naam }}
+            </v-card-title>
+            <v-card-subtitle class="card-price">
+              €{{ product.prijs }}
+            </v-card-subtitle>
+            <div class="select-label">Aantal</div>
+            <v-card-actions class="card-actions">
+              <addBtn @click="addToCart(product)" />
+              <v-spacer></v-spacer>
+              <quantitySelect v-model="product.aantal" />
+            </v-card-actions>
+          </div>
+        </v-card>
+      </v-col>
+    </v-row>
+    <router-link :to="'/cart/' + this.orderId" class="cart-button-link">
+      <v-btn class="total-cart-button">
+        Winkelwagen
+      </v-btn>
+    </router-link>
   </div>
 </template>
 
@@ -51,11 +41,13 @@
 export default {
   data() {
     return {
-      products: []
+      products: [],
+      orderId: null,
     };
   },
   mounted() {
     this.fetchProducts();
+    this.updateOrderId();
   },
   methods: {
     fetchProducts() {
@@ -66,10 +58,50 @@ export default {
         })
         .catch(error => {
           console.error('Error fetching products:', error);
+
         });
     },
+    addToCart(product) {
+      const orderData = {
+        orderId: this.orderId,
+        productId: product.id,
+        productName: product.naam,
+        quantity: product.aantal,
+        totalPrice: product.prijs * product.aantal
+      };
+
+      fetch('http://localhost:3000/addToCart', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(orderData)
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Failed to add order to cart');
+          }
+          console.log('Order added to cart');
+        })
+        .catch(error => {
+          console.error('Error adding order to cart:', error);
+        });
+    },
+    updateOrderId() {
+      fetch('http://localhost:3000/latestOrderId')
+        .then(response => response.json())
+        .then(data => {
+          const latestOrderId = data.latestOrderId;
+          this.orderId = latestOrderId + 1;
+        })
+        .catch(error => {
+          console.error('Error fetching latest orderId:', error);
+        });
+    },
+
   }
 };
+
 </script>
 
 <style scoped>

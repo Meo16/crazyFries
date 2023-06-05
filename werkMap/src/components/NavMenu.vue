@@ -1,20 +1,20 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router';
+import { RouterLink } from 'vue-router';
 </script>
 
 <template>
     <v-app>
         <v-app-bar>
-            <v-app-bar-nav-icon size="60" style="font-size: 35px; padding-top: 5px;"
-                @click="menuOpen = !menuOpen"></v-app-bar-nav-icon>
+            <v-app-bar-nav-icon size="60" style="font-size: 35px; padding-top: 5px;" @click="menuOpen = !menuOpen"
+                ref="hamburgerIcon"></v-app-bar-nav-icon>
         </v-app-bar>
-        <v-card v-if="menuOpen" class="menu-card" elevation="6">
+        <v-card v-if="menuOpen" class="menu-card">
             <v-card-text style="padding: 0;">
                 <v-list>
                     <v-list-item style="padding: 0;">
                         <v-list-item-content class="item-content">
                             <v-list-item-title>
-                                <RouterLink to="/home">Home</RouterLink>
+                                <RouterLink to="/home" @click="menuOpen = false">Home</RouterLink>
                             </v-list-item-title>
                         </v-list-item-content>
                         <v-list-item-content class="item-content">
@@ -22,7 +22,7 @@ import { RouterLink, RouterView } from 'vue-router';
                         </v-list-item-content>
                         <v-list-item-content class="item-content">
                             <v-list-item-title>
-                                <RouterLink to="/about">Bestellen</RouterLink>
+                                <RouterLink to="/order" @click="menuOpen = false">Bestellen</RouterLink>
                             </v-list-item-title>
                         </v-list-item-content>
                         <v-list-item-content class="item-content">
@@ -65,7 +65,8 @@ a {
 .menu-card {
     position: fixed;
     left: 0;
-    top: 55px;
+    top: 64px;
+    height: 100vh;
     width: 100%;
     background-color: white;
     z-index: 999;
@@ -78,10 +79,14 @@ a {
 }
 
 .item-content {
-    padding: 15px 0 15px 0;
+
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.v-list-item-title {
+    padding: 80px 0 80px 0;
 }
 
 .item-content:active {
@@ -89,7 +94,7 @@ a {
 }
 
 .v-list-item-title {
-    font-size: 20px
+    font-size: 34px
 }
 
 .icon {

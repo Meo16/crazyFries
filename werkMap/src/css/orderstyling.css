@@ -1,9 +1,7 @@
-.bottom-image-container {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    z-index: -1;
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+
+* {
+    font-family: 'Itim', cursive;
 }
 
 .bottom-image {
@@ -11,8 +9,104 @@
     object-fit: cover;
 }
 
-.card-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 20px;
+.logo {
+    z-index: 9999;
+    width: 200px;
+    margin-top: 20px;
+}
+
+.v-card--variant-elevated {
+    box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+.v-card {
+    margin-top: 40px;
+    background: rgb(255, 101, 54);
+    background: linear-gradient(0deg, rgb(255, 101, 54) 42%, rgb(255, 187, 0) 100%);
+    width: 190px;
+    border-radius: 20px;
+}
+
+
+.custom-card {
+    margin-bottom: 20px;
+    height: 235px;
+    position: relative;
+    overflow: visible;
+}
+
+.card-image {
+    height: 120px;
+    position: absolute;
+    top: -28px;
+    left: -20px;
+    right: -20px;
+    margin: 0 -20px;
+    z-index: 1;
+}
+
+.card-content {
+    height: 170px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding-top: 10px;
+    background-color: white;
+    border-radius: inherit;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.card-title {
+    padding: 10px 0 10px 0;
+    font-size: 25px;
+    text-align: center;
+    margin-bottom: -3px;
+}
+
+.card-price {
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.plus-icon {
+    font-size: 17px;
+    color: white;
+}
+
+.card-actions {
+    flex: 1;
+}
+
+.select-label {
+    padding: 0 20px 10px 0;
+    font-size: 14px;
+    text-align: right;
+    margin-bottom: 5px;
+}
+
+.cart-button-link {
+    display: flex;
+    justify-content: center;
+}
+
+.total-cart-button {
+    font-size: 18px;
+    color: white;
+    display: flex;
+    align-content: center;
+
+    border-radius: 150px;
+    padding: 35px 40px !important;
+    background-color: #4ed052;
+    position: fixed;
+    bottom: 0;
+}
+
+.v-row {
+    margin: 50px 0 0 0 !important;
 }

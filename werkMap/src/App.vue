@@ -1,5 +1,5 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router';
+import { RouterView } from 'vue-router';
 import HamburgerNav from './components/NavMenu.vue';
 import '@mdi/font/css/materialdesignicons.css';
 </script>
@@ -12,9 +12,6 @@ import '@mdi/font/css/materialdesignicons.css';
         <RouterView />
     </div>
 </template>
-
-
-  
   
 
 <style></style>
