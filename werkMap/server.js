@@ -74,8 +74,22 @@ app.get('/products/:orderId', (req, res) => {
     );
 });
 
-
-
-
+// update het aantal van een orders product op basis van product id
+app.put('/products/:productId', (req, res) => {
+    console.log(req.body, req.params.productId);
+    const productId = req.params.productId;
+    const { aantal } = req.body;
+    pool.query(
+        'UPDATE productsorder SET aantal = ? WHERE id = ?',
+        [aantal, productId],
+        (err, results) => {
+            if (err) {
+                console.error('Error executing query: ', err);
+                return res.status(500).json({ error: 'Failed to update product quantity in the database' });
+            }
+            res.json({ success: true });
+        }
+    );
+});
 
 app.listen(PORT, () => console.log(`Express server currently running on port ${PORT}`));
