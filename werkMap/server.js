@@ -76,7 +76,6 @@ app.get('/products/:orderId', (req, res) => {
 
 // update het aantal van een orders product op basis van product id
 app.put('/products/:productId', (req, res) => {
-    console.log(req.body, req.params.productId);
     const productId = req.params.productId;
     const { totaalPrijs, aantal } = req.body;
     pool.query(
@@ -87,10 +86,22 @@ app.put('/products/:productId', (req, res) => {
                 console.error('Error executing query:', err);
                 return res.status(500).json({ error: 'Failed to update product totalPrice and quantity in the database' });
             }
-            console.log(totaalPrijs);
             res.json({ success: true });
         }
     );
 });
+
+// delete product op basis van product id
+app.delete('/products/:productId', (req, res) => {
+    const productId = req.params.productId;
+    pool.query('DELETE FROM productsorder WHERE id = ?', [productId], (err, results) => {
+        if (err) {
+            console.error('Error executing query:', err);
+            return res.status(500).json({ error: 'Failed to delete product from the database' });
+        }
+        res.json({ success: true });
+    });
+});
+
 
 app.listen(PORT, () => console.log(`Express server currently running on port ${PORT}`));

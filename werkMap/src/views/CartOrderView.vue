@@ -21,7 +21,7 @@ import xButton from '../components/XButton.vue';
                 <tbody>
                     <tr v-for="product in products" :key="product.id">
                         <td>
-                            <xButton />
+                            <xButton @click="deleteProduct(product.id)" />
                         </td>
                         <td>{{ product.naam }}</td>
                         <td>{{ product.totaalPrijs }}</td>
@@ -37,9 +37,11 @@ import xButton from '../components/XButton.vue';
                 </tbody>
             </v-table>
         </div>
-        <v-btn class="go-to-pay-button">
-            €{{ calculateTotalPrice() }} Bestellen
-        </v-btn>
+        <router-link :to="{ path: '/pay', param: { totalPrice: calculateTotalPrice() } }" class="pay-button-link">
+            <v-btn class="go-to-pay-button">
+                €{{ calculateTotalPrice() }} Bestellen
+            </v-btn>
+        </router-link>
     </div>
 </template>
   
@@ -91,9 +93,7 @@ export default {
         },
         updateProductTotalPriceAndQuantity(productId, totaalPrijs, quantity) {
             const pricePerItem = this.pricePerItemMap[productId];
-            console.log(pricePerItem);
             const newTotalPricePerItem = pricePerItem * quantity;
-            console.log(newTotalPricePerItem);
 
             const productToUpdate = this.products.find((product) => product.id === productId);
             if (productToUpdate) {
@@ -116,8 +116,20 @@ export default {
                     console.error('Error updating product quantity:', error);
                 });
         },
-
-
+        deleteProduct(productId) {
+            fetch(`http://localhost:3000/products/${productId}`, {
+                method: 'DELETE',
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to delete product');
+                    }
+                    this.products = this.products.filter(product => product.id !== productId);
+                })
+                .catch(error => {
+                    console.error('Error deleting product:', error);
+                });
+        }
     },
 };
 </script>
