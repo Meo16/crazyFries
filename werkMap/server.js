@@ -78,14 +78,14 @@ app.get('/products/:orderId', (req, res) => {
 app.put('/products/:productId', (req, res) => {
     console.log(req.body, req.params.productId);
     const productId = req.params.productId;
-    const { aantal } = req.body;
+    const { totaalPrijs, aantal } = req.body;
     pool.query(
-        'UPDATE productsorder SET aantal = ? WHERE id = ?',
-        [aantal, productId],
+        'UPDATE productsorder SET totaalPrijs = ?, aantal = ? WHERE id = ?',
+        [totaalPrijs, aantal, productId],
         (err, results) => {
             if (err) {
-                console.error('Error executing query: ', err);
-                return res.status(500).json({ error: 'Failed to update product quantity in the database' });
+                console.error('Error executing query:', err);
+                return res.status(500).json({ error: 'Failed to update product totalPrice and quantity in the database' });
             }
             res.json({ success: true });
         }
