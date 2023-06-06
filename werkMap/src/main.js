@@ -9,10 +9,10 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 /* import specific icons */
-import { faPlus, faCheck } from '@fortawesome/free-solid-svg-icons'
+import { faPlus, faCheck, faXmark } from '@fortawesome/free-solid-svg-icons'
 
 /* add icons to the library */
-library.add(faPlus, faCheck)
+library.add(faPlus, faCheck, faXmark)
 
 
 // Vuetify

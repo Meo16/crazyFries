@@ -87,6 +87,7 @@ app.put('/products/:productId', (req, res) => {
                 console.error('Error executing query:', err);
                 return res.status(500).json({ error: 'Failed to update product totalPrice and quantity in the database' });
             }
+            console.log(totaalPrijs);
             res.json({ success: true });
         }
     );

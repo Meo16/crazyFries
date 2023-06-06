@@ -1,6 +1,7 @@
 <script setup>
 import quantitySelect from '../components/NumSelect.vue';
-import checkButton from '../components/checkButton.vue';
+import checkButton from '../components/CheckButton.vue';
+import xButton from '../components/XButton.vue';
 </script>
 
 <template>
@@ -19,7 +20,9 @@ import checkButton from '../components/checkButton.vue';
                 </thead>
                 <tbody>
                     <tr v-for="product in products" :key="product.id">
-                        <td></td>
+                        <td>
+                            <xButton />
+                        </td>
                         <td>{{ product.naam }}</td>
                         <td>{{ product.totaalPrijs }}</td>
                         <td>
@@ -53,6 +56,7 @@ export default {
         this.orderId = this.$route.params.orderId;
         this.fetchProductsBasedOnOrderId();
         this.calculatePricePerItem();
+
     },
     methods: {
         fetchProductsBasedOnOrderId() {
@@ -86,32 +90,34 @@ export default {
             }
         },
         updateProductTotalPriceAndQuantity(productId, totaalPrijs, quantity) {
+            const pricePerItem = this.pricePerItemMap[productId];
+            console.log(pricePerItem);
+            const newTotalPricePerItem = pricePerItem * quantity;
+            console.log(newTotalPricePerItem);
+
+            const productToUpdate = this.products.find((product) => product.id === productId);
+            if (productToUpdate) {
+                productToUpdate.totaalPrijs = newTotalPricePerItem.toFixed(2);
+            }
+
             fetch(`http://localhost:3000/products/${productId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ totaalPrijs: totaalPrijs, aantal: quantity }),
+                body: JSON.stringify({ totaalPrijs: newTotalPricePerItem.toFixed(2), aantal: quantity }),
             })
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Failed to update product totalPrice and quantity');
                     }
-                    const pricePerItem = this.pricePerItemMap[productId];
-                    console.log(pricePerItem);
-                    const newTotalPricePerItem = pricePerItem * quantity;
-                    console.log(newTotalPricePerItem);
-
-                    const productToUpdate = this.products.find((product) => product.id === productId);
-                    if (productToUpdate) {
-                        productToUpdate.totaalPrijs = newTotalPricePerItem.toFixed(2);
-                    }
-
                 })
                 .catch(error => {
                     console.error('Error updating product quantity:', error);
                 });
         },
+
+
     },
 };
 </script>
