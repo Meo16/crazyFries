@@ -5,9 +5,8 @@
 }
 
 .logo {
-    z-index: 9999;
-    width: 200px;
-    margin-top: 20px;
+    width: 250px;
+    margin-top: 80px;
 }
 
 .v-input {
@@ -16,7 +15,7 @@
 
 }
 
-.order-button-link {
+.pay-button-link {
     display: flex;
     justify-content: center;
 }

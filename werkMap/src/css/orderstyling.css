@@ -4,15 +4,18 @@
     font-family: 'Itim', cursive;
 }
 
+.v-toolbar {
+    z-index: 999;
+}
+
 .bottom-image {
     width: 100%;
     object-fit: cover;
 }
 
 .logo {
-    z-index: 9999;
-    width: 200px;
-    margin-top: 20px;
+    width: 250px;
+    margin-top: 80px;
 }
 
 .v-card--variant-elevated {
@@ -109,4 +112,15 @@
 
 .v-row {
     margin: 50px 0 0 0 !important;
+}
+
+.search-bar {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+        rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    font-size: 20px;
+    padding-left: 10px;
+    margin-top: 25px;
+    width: 250px;
+    border-radius: 3px;
+    height: 40px;
 }

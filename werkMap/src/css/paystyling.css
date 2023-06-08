@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+
+* {
+    font-family: 'Itim', cursive;
+}
+
+.logo {
+    width: 250px;
+    margin-top: 80px;
+}
+
+.pay-method-panel {
+    margin-top: 45px;
+    width: 300px;
+}
+
+h1 {
+    font-weight: 500;
+    letter-spacing: 1px;
+    font-size: 25px;
+    margin-top: 80px;
+}
+
+.v-list-item {
+    margin-top: 50px !important;
+}

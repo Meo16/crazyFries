@@ -4,7 +4,7 @@ import { RouterLink, RouterView } from 'vue-router';
 
 <template>
   <div class="d-flex align-center flex-column">
-    <v-img class="logoHomePage" src="../../src/assets/img/Logo.png" width="350px"></v-img>
+    <v-img class="logoHomePage" src="../../src/assets/img/Logo.png"></v-img>
     <div class="image-container">
       <router-link @click="menuOpen = false" class="overlay-link" to="/order">
         <v-img class="align-center directToOrderImg" width="300" :aspect-ratio="1"

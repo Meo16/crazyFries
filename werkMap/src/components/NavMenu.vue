@@ -57,6 +57,7 @@ export default {
     min-height: unset;
 }
 
+
 a {
     text-decoration: none;
     color: black;
@@ -66,12 +67,11 @@ a {
     position: fixed;
     left: 0;
     top: 64px;
-    height: 100vh;
+    height: 100%;
     width: 100%;
     background-color: white;
     z-index: 999;
-    max-height: calc(100vh - 64px);
-    overflow-y: auto;
+    overflow-y: none;
 }
 
 .v-app-bar.v-toolbar:not(.v-toolbar--flat) {

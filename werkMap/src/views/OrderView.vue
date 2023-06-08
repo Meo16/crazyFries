@@ -6,8 +6,9 @@ import quantitySelect from '../components/NumSelect.vue';
 <template>
   <div class="d-flex align-center flex-column">
     <v-img class="logo" src="../../src/assets/img/Logo.png"></v-img>
+    <input v-model="searchQuery" type="text" placeholder="Search" class="search-bar" />
     <v-row>
-      <v-col v-for="product in products" :key="product.id" cols="6" class="d-flex align-center flex-column">
+      <v-col v-for="product in filteredProducts" :key="product.id" cols="6" class="d-flex align-center flex-column">
         <v-card class="custom-card">
           <div class="card-image">
             <v-img :src="product.src + [product.id] + '.png'"></v-img>
@@ -43,6 +44,7 @@ export default {
     return {
       products: [],
       orderId: null,
+      searchQuery: '',
     };
   },
   mounted() {
@@ -58,7 +60,6 @@ export default {
         })
         .catch(error => {
           console.error('Error fetching products:', error);
-
         });
     },
     addToCart(product) {
@@ -67,15 +68,15 @@ export default {
         productId: product.id,
         productName: product.naam,
         quantity: product.aantal,
-        totalPrice: product.prijs * product.aantal
+        totalPrice: product.prijs * product.aantal,
       };
 
       fetch('http://localhost:3000/addToCart', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify(orderData)
+        body: JSON.stringify(orderData),
       })
         .then(response => {
           if (!response.ok) {
@@ -98,14 +99,20 @@ export default {
           console.error('Error fetching latest orderId:', error);
         });
     },
-
-  }
+  },
+  computed: {
+    filteredProducts() {
+      return this.products.filter(product => {
+        return product.naam.toLowerCase().includes(this.searchQuery.toLowerCase());
+      });
+    },
+  },
 };
-
 </script>
 
 <style scoped>
 @import '../css/orderstyling.css';
 </style>
+
 
 
