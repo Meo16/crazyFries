@@ -6,37 +6,39 @@ import quantitySelect from '../components/NumSelect.vue';
 <template>
   <div class="d-flex align-center flex-column">
     <v-img class="logo" src="../../src/assets/img/Logo.png"></v-img>
-    <input v-model="searchQuery" type="text" placeholder="Search" class="search-bar" />
-    <v-row>
-      <v-col v-for="product in filteredProducts" :key="product.id" cols="6" class="d-flex align-center flex-column">
-        <v-card class="custom-card">
-          <div class="card-image">
-            <v-img :src="product.src + [product.id] + '.png'"></v-img>
-          </div>
-          <div class="card-content">
-            <v-card-title class="card-title">
-              {{ product.naam }}
-            </v-card-title>
-            <v-card-subtitle class="card-price">
-              €{{ product.prijs }}
-            </v-card-subtitle>
-            <div class="select-label">Aantal</div>
-            <v-card-actions class="card-actions">
-              <addBtn @click="addToCart(product)" />
-              <v-spacer></v-spacer>
-              <quantitySelect v-model="product.aantal" />
-            </v-card-actions>
-          </div>
-        </v-card>
-      </v-col>
-    </v-row>
-    <router-link :to="'/cart/' + this.orderId" class="cart-button-link">
-      <v-btn class="total-cart-button">
-        Winkelwagen
-      </v-btn>
-    </router-link>
+    <input v-model="searchQuery" type="text" placeholder="Zoek je product..." class="search-bar" />
+    <v-container>
+      <v-row>
+        <v-col cols="12" sm="6" md="4" lg="3" v-for="(product) in filteredProducts" :key="product.id">
+          <v-card class="custom-card">
+            <div class="card-image">
+              <v-img :src="product.src + [product.id] + '.png'"></v-img>
+            </div>
+            <div class="card-content">
+              <v-card-title class="card-title">
+                {{ product.naam }}
+              </v-card-title>
+              <v-card-subtitle class="card-price">
+                €{{ product.prijs }}
+              </v-card-subtitle>
+              <div class="select-label">Aantal</div>
+              <v-card-actions class="card-actions">
+                <addBtn @click="addToCart(product)" />
+                <v-spacer></v-spacer>
+                <quantitySelect v-model="product.aantal" />
+              </v-card-actions>
+            </div>
+          </v-card>
+        </v-col>
+      </v-row>
+    </v-container>
+    <v-btn :to="'/cart/' + this.orderId" class="total-cart-button">
+      <font-awesome-icon class="cart-icon" icon="fa-solid fa-cart-shopping" /> Winkelwagen
+    </v-btn>
   </div>
 </template>
+
+
 
 <script>
 export default {

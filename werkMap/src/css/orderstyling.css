@@ -32,16 +32,17 @@
 
 
 .custom-card {
+    width: 240px;
     margin-bottom: 20px;
-    height: 235px;
+    height: 245px;
     position: relative;
     overflow: visible;
 }
 
 .card-image {
-    height: 120px;
+    height: 135px;
     position: absolute;
-    top: -28px;
+    top: -27px;
     left: -20px;
     right: -20px;
     margin: 0 -20px;
@@ -76,11 +77,6 @@
     margin-bottom: 10px;
 }
 
-.plus-icon {
-    font-size: 17px;
-    color: white;
-}
-
 .card-actions {
     flex: 1;
 }
@@ -92,22 +88,16 @@
     margin-bottom: 5px;
 }
 
-.cart-button-link {
-    display: flex;
-    justify-content: center;
-}
-
 .total-cart-button {
     font-size: 18px;
     color: white;
     display: flex;
     align-content: center;
-
     border-radius: 150px;
     padding: 35px 40px !important;
     background-color: #4ed052;
     position: fixed;
-    bottom: 0;
+    bottom: 15px;
 }
 
 .v-row {
@@ -123,4 +113,55 @@
     width: 250px;
     border-radius: 3px;
     height: 40px;
+}
+
+.numSelect {
+    width: 0px;
+}
+
+.d-flex:last-child {
+    margin-bottom: 50px;
+}
+
+.cart-icon {
+    font-size: 17px;
+    color: white;
+    margin-right: 15px;
+}
+
+.v-col-sm-6,
+.v-col-md-4,
+.v-col-lg-3,
+.v-col-12 {
+    display: flex;
+    justify-content: center;
+}
+
+@media (min-width: 768px) {
+    .search-bar {
+        width: 350px;
+    }
+}
+
+@media (min-width: 960px) {
+    .search-bar {
+        width: 450px;
+    }
+
+}
+
+@media (min-width: 1920px) {
+    .custom-card {
+        width: 260px;
+        height: 285px;
+
+    }
+
+    .card-content {
+        height: 180px;
+    }
+
+    .card-image {
+        height: 175px;
+    }
 }

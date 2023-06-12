@@ -9,7 +9,7 @@
     margin-top: 80px;
 }
 
-.pay-method-panel {
+.pay-method-panels {
     margin-top: 45px;
     width: 300px;
 }
@@ -21,6 +21,57 @@ h1 {
     margin-top: 80px;
 }
 
-.v-list-item {
-    margin-top: 50px !important;
+
+.image-container .v-img {
+    width: 50px;
+    height: 50px;
+}
+
+.v-expansion-panels:deep(.v-expansion-panel-title) {
+    padding: 8px;
+}
+
+.v-expansion-panel:deep(.v-expansion-panel-text__wrapper) {
+    padding: 22px 10px 0 10px;
+}
+
+.v-expansion-panel:nth-child(2):deep(.v-expansion-panel-text__wrapper) {
+    font-size: 17px;
+    padding: 15px 10px 15px 10px;
+}
+
+.v-list:deep(.v-list-item) {
+    width: 300px;
+    height: 66px;
+}
+
+.image-container.two {
+    display: flex;
+}
+
+.pay-complete-button-container {
+    position: absolute;
+    bottom: 15px;
+}
+
+.pay-complete-button {
+    font-size: 18px;
+    color: white;
+    display: flex;
+    align-content: center;
+    border-radius: 150px;
+    padding: 35px 40px !important;
+    background-color: #5b3beb;
+}
+
+@media (min-width: 960px) {
+    .pay-method-panels {
+        width: 500px;
+    }
+}
+
+@media (min-width: 1280px) {
+    .pay-method-panels {
+        width: 650px;
+    }
 }

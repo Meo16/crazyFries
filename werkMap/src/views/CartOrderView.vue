@@ -37,11 +37,9 @@ import xButton from '../components/XButton.vue';
                 </tbody>
             </v-table>
         </div>
-        <router-link :to="{ path: '/pay', param: { totalPrice: calculateTotalPrice() } }" class="pay-button-link">
-            <v-btn class="go-to-pay-button">
-                €{{ calculateTotalPrice() }} Bestellen
-            </v-btn>
-        </router-link>
+        <v-btn :to="{ path: '/pay', param: { totalPrice: calculateTotalPrice() } }" class="go-to-pay-button">
+            €{{ calculateTotalPrice() }} Bestellen
+        </v-btn>
     </div>
 </template>
   

@@ -12,12 +12,6 @@
 .v-input {
     padding-top: 20px;
     width: 65px;
-
-}
-
-.pay-button-link {
-    display: flex;
-    justify-content: center;
 }
 
 .go-to-pay-button {
@@ -25,10 +19,15 @@
     color: white;
     display: flex;
     align-content: center;
-
     border-radius: 150px;
     padding: 35px 40px !important;
     background-color: #4ed052;
     position: fixed;
-    bottom: 0;
+    bottom: 15px;
+}
+
+@media (min-width: 960px) {
+    .product-list-container {
+        width: 50%;
+    }
 }
