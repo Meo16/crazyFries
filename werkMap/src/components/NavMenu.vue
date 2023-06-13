@@ -86,7 +86,7 @@ a {
 }
 
 .v-list-item-title {
-    padding: 80px 0 80px 0;
+    padding: 55px 0 55px 0;
 }
 
 .item-content:active {
