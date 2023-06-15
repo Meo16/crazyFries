@@ -4,7 +4,7 @@
             <v-spacer></v-spacer>
             <div class="button-container">
                 <v-btn to="/home" exact>Home</v-btn>
-                <v-btn>Menu</v-btn>
+                <v-btn disabled="true">Menu</v-btn>
                 <v-btn to="/order">Bestellen</v-btn>
                 <v-btn>Contact</v-btn>
             </div>

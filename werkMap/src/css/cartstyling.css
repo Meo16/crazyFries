@@ -26,6 +26,10 @@
     bottom: 15px;
 }
 
+.v-table>.v-table__wrapper>table>tbody>tr>td {
+    padding: 0 10px;
+}
+
 @media (min-width: 960px) {
     .product-list-container {
         width: 50%;
