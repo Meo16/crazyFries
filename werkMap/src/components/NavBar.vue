@@ -6,7 +6,7 @@
                 <v-btn to="/home" exact>Home</v-btn>
                 <v-btn disabled="true">Menu</v-btn>
                 <v-btn to="/order">Bestellen</v-btn>
-                <v-btn>Contact</v-btn>
+                <v-btn disabled="true">Contact</v-btn>
             </div>
             <v-spacer></v-spacer>
         </v-app-bar>
