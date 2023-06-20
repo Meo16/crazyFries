@@ -24,7 +24,7 @@ import xButton from '../components/XButton.vue';
                             <xButton @click="deleteProduct(product.id)" />
                         </td>
                         <td>{{ product.naam }}</td>
-                        <td>{{ product.totaalPrijs }}</td>
+                        <td>€{{ product.totaalPrijs }}</td>
                         <td>
                             <quantity-select v-model="product.aantal" />
                         </td>
